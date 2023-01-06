@@ -1,0 +1,29 @@
+.your-posts {
+  display: grid;
+  align-self: center;
+  gap: 30px;
+  height: 100vh;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+
+
+.post-form {
+  margin:auto;
+  display: grid;
+  min-height: 70vh;
+  max-height: 100vh;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  /* transform: translateY(100px); */
+  color: #a1a1a1;
+}
+
+.home-posts {
+  display: grid;
+  align-self: center;
+  height: 100vh;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
