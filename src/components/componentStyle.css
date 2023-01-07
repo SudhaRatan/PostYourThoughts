@@ -182,11 +182,12 @@ input[type="file"] {
 }
 .spinner{
   position: absolute;
+  transform: translateY(100px);
   background-color: #20212490;
   width: fit-content;
   padding:50px;
   z-index:10;
-  top:30%;
+  /* top:50%; */
   left: 0;
   right:0;
   margin:auto;
