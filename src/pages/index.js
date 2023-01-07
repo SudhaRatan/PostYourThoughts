@@ -2,7 +2,7 @@ import './pageStyle.css'
 import Card from '../components/card';
 import PopUp from '../components/navbar/popupMsg';
 import { useEffect, useState } from 'react';
-import {  useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { API } from '../App';
 import Loader from '../components/loader';
@@ -47,18 +47,21 @@ const Index = () => {
     }, [location]);
 
     return (
-        <div className="home-posts">
+        <div>
             <PopUp message={msg} visible={visible} />
-            {
-                posts ? (
-                    posts.map((post) => {
-                        return (
-                            <Card key={post._id} title={post.title} description={post.description} imageData={post.imageData} by={post.authorId.username} />
-                        )
-                    })
+            <div className='home'>
+                {
+                    posts ? (
+                        posts.map((post) => {
+                            return (
+                                <Card key={post._id} title={post.title} description={post.description} imageData={post.imageData} by={post.authorId.username} />
+                            )
+                        })
 
-                ) : <Loader loading={true} />
-            }
+                    ) : <Loader loading={true} />
+                }
+            </div>
+
         </div>
     )
 }

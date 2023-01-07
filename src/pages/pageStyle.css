@@ -1,8 +1,8 @@
 .your-posts {
   display: grid;
-  align-self: center;
-  gap: 30px;
-  height: 100vh;
+  /* align-self: center; */
+  gap: 10px;
+  /* height: 100vh; */
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
@@ -25,5 +25,12 @@
   align-self: center;
   height: 100vh;
   gap: 30px;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+.home{
+  display: grid;
+  gap:10px;
+  grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
 }

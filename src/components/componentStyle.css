@@ -39,21 +39,16 @@
   align-items: center;
   border: 1px solid #404040;
   grid-template-rows: repeat(2, 1fr);
-  min-width:300px;
+  /* min-width:300px;
   width: fit-content;
-  max-width: 600px;
+  max-width: 600px; */
   gap: 0px;
   border-radius: 10px;
   z-index: 1;
   box-shadow: 1px 1px 10px 1px #00000070;
 }
 
-@media screen and (width < 600px) {
-  .card{
-    width:96vw;
-    /* background-color: aqua; */
-  }
-}
+
 .card-body{
   display: grid;
   grid-template-columns: 1fr;
@@ -78,6 +73,7 @@
   border-radius: 10px;
   box-shadow: 1px 1px 10px 1px #1a1a1a;
   height: 180px;
+  width: 100%
 
 }
 
