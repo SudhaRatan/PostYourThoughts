@@ -23,7 +23,7 @@ const Index = () => {
                 .then((res) => {
                     // console.log("called")
                     try {
-                        console.log(res.data.posts)
+                        // console.log(res.data.posts)
                         setPosts(res.data.posts)
 
                     } catch (error) {

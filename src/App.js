@@ -7,23 +7,25 @@ import YourPosts from './pages/yourPosts';
 import Card from './components/card';
 import Login from './pages/login';
 import Signup from './pages/signup';
+import SearchBar from './components/search';
 
 export const API = process.env.REACT_APP_API;
 
 function App() {
   return (
     <div style={st.body}>
-    <BrowserRouter >
-    <Navbar />
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/post" element={<Post />} />
-        <Route path="/yourposts" element={<YourPosts />} />
-        <Route path="/card" element={<Card />} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/signup" element={<Signup/>} />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter >
+        <Navbar />
+        {/* <SearchBar /> */}
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/post" element={<Post />} />
+          <Route path="/yourposts" element={<YourPosts />} />
+          <Route path="/card" element={<Card />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </BrowserRouter>
 
     </div>
 
@@ -33,9 +35,9 @@ function App() {
 export default App;
 
 const st = {
-  body:{
-    maxHeight:"100vh",
-    overflow:"scroll",
+  body: {
+    maxHeight: "100vh",
+    overflow: "scroll",
     overflowX: "hidden",
   },
 }
