@@ -40,6 +40,7 @@ const YourPosts = () => {
 
   return (
     <div className="your-posts">
+    <h2 style={{textAlign:"center",color:"#a7a7a7"}}>Your posts</h2>
       {
         posts ? (
           posts.map((post) => {

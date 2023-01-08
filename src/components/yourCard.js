@@ -1,5 +1,6 @@
 import Card from "./card";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import imgg from "./options.png";
 import deleteButton from "./delete.png"
 import editButton from "./edit.png"
@@ -12,7 +13,7 @@ const YourCard = (props) => {
   axios.defaults.headers.post['x-access-token'] = localStorage.getItem('token')
   axios.defaults.headers.delete['x-access-token'] = localStorage.getItem('token')
 
-
+  const navigate = useNavigate()
   const [visible, setVisible] = useState(false)
 
   const deleteFunc = () => {
@@ -20,14 +21,15 @@ const YourCard = (props) => {
     axios
       .delete(`${API}/post/your/${props.id}`, { data: props.id })
       .then((res) => {
-        if(res.data.stat){
+        if (res.data.stat) {
           props.change(props.id)
         }
       })
   }
 
-  const editFunc = () => {
-    console.log("Edit")
+  const editFunc = async() => {
+    // console.log("Edit")
+    navigate("/post", { state: {id: props.id} })
   }
 
   return (
@@ -66,7 +68,7 @@ const YourCard = (props) => {
           </div>
           <div style={st.btn} onClick={editFunc}>
             <img style={{ padding: "80px 50px" }} src={editButton} alt="edit" />
-            <div style={st.btnText}>Edit(not implemented)</div>
+            <div style={st.btnText}>Edit</div>
           </div>
         </div>
       </div>
@@ -97,6 +99,7 @@ export default YourCard;
 const st = {
   btn: {
     textAlign: "center",
+    cursor: "pointer",
   },
   btnText: {
     color: "#a7a7a7",
