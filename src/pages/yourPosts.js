@@ -39,8 +39,9 @@ const YourPosts = () => {
   }, [data])
 
   return (
-    <div className="your-posts">
-    <h2 style={{textAlign:"center",color:"#a7a7a7"}}>Your posts</h2>
+    <>
+    <h2 style={{color:"#a7a7a7",textAlign:"center"}}>Your Posts</h2>
+<div className="your-posts">
       {
         posts ? (
           posts.map((post) => {
@@ -54,6 +55,8 @@ const YourPosts = () => {
       }
     </div>
 
+    </>
+    
   )
 }
 
