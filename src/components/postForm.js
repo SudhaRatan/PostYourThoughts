@@ -57,6 +57,7 @@ const PostForm = (props) => {
           }
         })
     } else {
+      setLoading(true)
       axios
         .get(`${API}/post/your/${props.data.id}`)
         .then((res) => {
@@ -68,6 +69,7 @@ const PostForm = (props) => {
           setImage(res.data.thought.imageData)
           setUid(res.data.thought._id)
           setUpdate(true)
+          setLoading(false)
         })
       setAuth(true)
     }
@@ -108,7 +110,6 @@ const PostForm = (props) => {
     } else {
       setStat("Fill all details")
     }
-    setLoading(false)
   }
 
   return (

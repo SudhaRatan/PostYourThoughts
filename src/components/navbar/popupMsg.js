@@ -6,13 +6,12 @@ const PopUp = (props) => {
       zIndex:"12",
       position: "absolute",
       color: "white",
-      width: "50vh",
-      backgroundColor:"#00000080",
+      width:"100%",
+      backgroundColor:"#00000060",
       boxSizing:"border-box",
       margin:"5px",
-      borderRadius:"20px",
       // transform:"translateY(30px)",
-      backdropFilter:"blur(10px)",
+      backdropFilter:"blur(5px)",
       visibility:props.visible ? "visible" : "hidden"
       
     }}>
