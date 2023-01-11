@@ -7,7 +7,7 @@ import YourPosts from './pages/yourPosts';
 import Card from './components/card';
 import Login from './pages/login';
 import Signup from './pages/signup';
-import SearchBar from './components/search';
+// import SearchBar from './components/search';
 
 export const API = process.env.REACT_APP_API;
 

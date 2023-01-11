@@ -27,9 +27,9 @@ const YourCard = (props) => {
       })
   }
 
-  const editFunc = async() => {
+  const editFunc = async () => {
     // console.log("Edit")
-    navigate("/post", { state: {id: props.id} })
+    navigate("/post", { state: { id: props.id } })
   }
 
   return (

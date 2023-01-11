@@ -1,6 +1,6 @@
 import imgg from "./search.png"
 import { useState } from "react"
-import axios from "axios"
+// import axios from "axios"
 
 const SearchBar = () => {
 
