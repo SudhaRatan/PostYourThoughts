@@ -102,7 +102,7 @@ const YourCard = (props) => {
             backdropFilter: "blur(10px)",
             opacity:"0.6",
             color:"white"
-          }}>Anonymous Post</div>: null
+          }}>Private Post</div>: null
           }
       </div>
     </div>

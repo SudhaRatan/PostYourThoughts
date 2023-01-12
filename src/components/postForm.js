@@ -176,7 +176,7 @@ const PostForm = (props) => {
                   checked={check}
                   onChange={()=>{setCheck(!check)}}
                 />&nbsp;
-                <label htmlFor="anonymous">Anonymous Post</label>
+                <label htmlFor="anonymous">Private Post</label>
               </div>
               <Loader loading={loading} />
             </div>
