@@ -89,6 +89,21 @@ const YourCard = (props) => {
             opacity: "0.4",
             backdropFilter: "blur(10px)",
           }} src={imgg} alt="options" />
+          {
+            props.anonymous ? <div style={{
+            position: "absolute",
+            bottom: "0",
+            transform: "translateY(-190px)",
+            marginLeft: "30px",
+            cursor: "pointer",
+            display: "grid",
+            alignItems: "center",
+            justifyContent: "center",
+            backdropFilter: "blur(10px)",
+            opacity:"0.6",
+            color:"white"
+          }}>Anonymous Post</div>: null
+          }
       </div>
     </div>
   )

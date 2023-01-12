@@ -4,12 +4,8 @@ import "./pageStyle.css"
 const Login = () => {
   return (
     <div className="post-form">
-      <h1 style={{
-        transform:"translateY(-40px)"
-      }}>Login</h1>
-      <div style={{
-        transform:"translateY(-100px)"
-      }}>
+      <h1 style={{margin:"20px"}}>Login</h1>
+      <div style={{margin:"20px"}}>
         <LoginForm />
       </div>
     </div>

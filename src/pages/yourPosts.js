@@ -47,7 +47,8 @@ const YourPosts = () => {
           posts.map((post) => {
             return (
               //cards
-              <YourCard change={childData} key={post._id} id={post._id} title={post.title} description={post.description} imageData={post.imageData} by={post.authorId.username} />
+              
+              <YourCard change={childData} key={post._id} id={post._id} title={post.title} description={post.description} imageData={post.imageData} by={post.authorId.username} anonymous={post.anonymous} />
             )
           })
 

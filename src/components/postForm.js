@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { API } from "../App";
 import { useNavigate } from "react-router-dom";
 import Loader from "./loader";
+import Compressor from "compressorjs"
 
 const PostForm = (props) => {
   axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
@@ -14,16 +15,18 @@ const PostForm = (props) => {
 
   const navigate = useNavigate()
   const [auth, setAuth] = useState(null)
+  const [check, setCheck] = useState(false)
   const [update, setUpdate] = useState(false)
   const [post, setPost] = useState({
     title: "",
     description: "",
+    anonymous: false
   })
   const [image, setImage] = useState(null)
   const [loading, setLoading] = useState(false)
   const [stat, setStat] = useState(null)
 
-  const [uid,setUid] = useState(null)
+  const [uid, setUid] = useState(null)
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -35,13 +38,28 @@ const PostForm = (props) => {
     })
   }
 
+
   const handleFileUpload = (e) => {
-    const imgFile = e.target.files[0]
+    setLoading(true)
+    const image123 = e.target.files[0]
+    new Compressor(image123, {
+      quality: 0.8,
+      success: (compressedImage) => {
+        // const imgFile = compressedImage
+        convertFile(compressedImage)
+      }
+    })
+  }
+
+  const convertFile = (file) => {
     const reader = new FileReader()
     reader.onloadend = () => {
       setImage(reader.result.toString())
+      setInterval(() => {
+        setLoading(false)
+      }, 1000)
     }
-    reader.readAsDataURL(imgFile)
+    reader.readAsDataURL(file)
   }
 
   useEffect(() => {
@@ -68,6 +86,7 @@ const PostForm = (props) => {
           })
           setImage(res.data.thought.imageData)
           setUid(res.data.thought._id)
+          setCheck(res.data.thought.anonymous)
           setUpdate(true)
           setLoading(false)
         })
@@ -76,12 +95,11 @@ const PostForm = (props) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   const postThought = () => {
     setLoading(true)
     if (post.title !== "" && post.description !== "" && image != null) {
       axios
-        .post(`${API}/post`, { post, image })
+        .post(`${API}/post`, { post, image, check })
         .then((res) => {
           if (res.data.stat) {
             navigate("/", { state: { message: "Posted...!" } })
@@ -99,7 +117,7 @@ const PostForm = (props) => {
     setLoading(true)
     if (post.title !== "" && post.description !== "" && image != null) {
       axios
-        .put(`${API}/post/your/${uid}`, { post, image })
+        .put(`${API}/post/your/${uid}`, { post, image, check })
         .then((res) => {
           if (res.data.stat) {
             navigate("/", { state: { message: "Post updated...!" } })
@@ -151,6 +169,15 @@ const PostForm = (props) => {
                   Upload Image
                 </div>
               </label>
+              <div>
+                <input
+                  name="anonymous"
+                  type="checkbox"
+                  checked={check}
+                  onChange={()=>{setCheck(!check)}}
+                />&nbsp;
+                <label htmlFor="anonymous">Anonymous Post</label>
+              </div>
               <Loader loading={loading} />
             </div>
             {

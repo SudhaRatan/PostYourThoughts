@@ -8,8 +8,8 @@ const Post = () => {
 
     return (
         <div className="post-form">
-            <h1>Post your thoughts</h1>
-            <div>
+            <h1 style={{margin:"20px"}}>Post your thoughts</h1>
+            <div style={{margin:"20px"}}>
                 Please post landscape images instead of portrait
             </div>
             <PostForm data={location.state} />
