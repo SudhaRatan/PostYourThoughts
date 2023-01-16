@@ -25,11 +25,9 @@ const Index = () => {
                     try {
                         // console.log(res.data.posts)
                         setPosts(res.data.posts)
-
                     } catch (error) {
                         console.log(error)
                     }
-
                 })
             if (location.state.message) {
                 setMsg(location.state.message)
@@ -39,11 +37,8 @@ const Index = () => {
                     setVisible(false)
                 }, 2000)
             }
-
         } catch (error) {
-
         }
-
     }, [location]);
 
     return (
@@ -54,10 +49,10 @@ const Index = () => {
                     posts ? (
                         posts.map((post) => {
                             return (
-                                <Card key={post._id} title={post.title} description={post.description} imageData={post.imageData} by={post.authorId.username} />
+                                <Card key={post._id} id={post._id} title={post.title} description={post.description}
+                                    by={post.authorId.username} />
                             )
                         })
-
                     ) : <Loader loading={true} />
                 }
             </div>

@@ -12,7 +12,7 @@ const YourPosts = () => {
 
   const navigate = useNavigate()
   const [posts, setPosts] = useState(null)
-  const [data,setData] = useState(null)
+  const [data, setData] = useState(null)
 
   const childData = (id) => {
     setData(id)
@@ -40,24 +40,25 @@ const YourPosts = () => {
 
   return (
     <>
-    <h2 style={{color:"#a7a7a7",textAlign:"center"}}>Your Posts</h2>
-<div className="your-posts">
-      {
-        posts ? (
-          posts.map((post) => {
-            return (
-              //cards
-              
-              <YourCard change={childData} key={post._id} id={post._id} title={post.title} description={post.description} imageData={post.imageData} by={post.authorId.username} anonymous={post.anonymous} />
-            )
-          })
+      <h2 style={{ color: "#a7a7a7", textAlign: "center" }}>Your Posts</h2>
+      <div className="your-posts">
+        {
+          posts ? (
+            posts.map((post) => {
+              return (
+                //cards
+                <YourCard change={childData} key={post._id} id={post._id}
+                  title={post.title} description={post.description}
+                  by={post.authorId.username} anonymous={post.anonymous} />
+              )
+            })
 
-        ) : <Loader loading={true} />
-      }
-    </div>
+          ) : <Loader loading={true} />
+        }
+      </div>
 
     </>
-    
+
   )
 }
 

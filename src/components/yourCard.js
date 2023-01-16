@@ -37,7 +37,10 @@ const YourCard = (props) => {
       position: "relative"
     }}>
       <Card
-        title={props.title} description={props.description} imageData={props.imageData} by={props.by}
+        title={props.title} 
+        description={props.description}
+         id={props.id}
+          by={props.by}
       />
       <div style={{
         visibility: visible ? "visible" : "hidden",

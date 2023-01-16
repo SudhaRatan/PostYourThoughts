@@ -111,14 +111,14 @@
 .postForm {
   z-index: 1;
   display: grid;
-  width: 50vw;
+  /* width: 50vw; */
   grid-template-columns: 1fr;
   gap: 20px;
 }
 
-@media screen and (max-width : 680px) {
+@media screen and (min-width : 900px) {
   .postForm {
-    width: 80vw;
+    width: 40vw;
   }
 }
 
