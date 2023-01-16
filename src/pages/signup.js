@@ -5,10 +5,9 @@ const Signup = () => {
   return (
     <div className="post-form">
       <h1 style={{
-        transform:"translateY(-40px)"
+        margin:"20px"
       }}>Signup</h1>
       <div style={{
-        transform:"translateY(-100px)"
       }}>
         <SignupForm />
       </div>
