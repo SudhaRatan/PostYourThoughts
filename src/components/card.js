@@ -13,7 +13,7 @@ const Card = (props) => {
       .get(`${API}/home/images/${props.id}`)
       .then(res => {
         setImg(res.data.imageData)
-        console.log(res)
+        // console.log(res)
       })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

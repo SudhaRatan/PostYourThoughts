@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { API } from '../App';
 import Loader from '../components/loader';
+import MyButton from '../components/button';
 
 
 const Index = () => {
@@ -14,17 +15,38 @@ const Index = () => {
     const [visible, setVisible] = useState(false)
     const [msg, setMsg] = useState(null)
     const [posts, setPosts] = useState(null)
+    const [page, setPage] = useState(0)
+    const [loading, setLoading] = useState(false)
+    const [loadMsg, setLoadMsg] = useState(null)
 
     useEffect(() => {
+        getHome(page)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [location]);
+
+    const getHome = () => {
         try {
             // console.log(location.state)
             axios
-                .get(`${API}/home`)
+                .get(`${API}/home/${page}`)
                 .then((res) => {
-                    // console.log("called")
                     try {
-                        // console.log(res.data.posts)
-                        setPosts(res.data.posts)
+                        if (res.data.posts.length === 0) {
+                            setLoadMsg("No more posts")
+                        } else {
+                            var temp
+                            if (posts == null) {
+                                temp = []
+                            }
+                            else {
+                                temp = posts
+                            }
+                            temp.push(...res.data.posts)
+                            setPosts(temp)
+                            setLoading(false)
+                            setPage(page + 1)
+                        }
+
                     } catch (error) {
                         console.log(error)
                     }
@@ -39,20 +61,56 @@ const Index = () => {
             }
         } catch (error) {
         }
-    }, [location]);
+    }
+
+    const loadMore = () => {
+        setLoading(true)
+        getHome(page)
+    }
 
     return (
         <div>
             <PopUp message={msg} visible={visible} />
-            <div className='home'>
+            <div >
                 {
                     posts ? (
-                        posts.map((post) => {
-                            return (
-                                <Card key={post._id} id={post._id} title={post.title} description={post.description}
-                                    by={post.authorId.username} />
-                            )
-                        })
+                        <>
+                            <div className='home'>
+                                {
+                                    posts.map((post) => {
+                                        return (
+                                            <Card key={post._id} id={post._id} title={post.title} description={post.description}
+                                                by={post.authorId.username} />
+                                        )
+                                    })
+                                }
+                            </div>
+                            {
+                                !loadMsg ?
+                                    loading ? <h2 style={{
+                                        textAlign: "center",
+                                        margin: "10px",
+                                        color: "white",
+                                    }}>
+                                        Loading...
+                                    </h2> :
+                                        <div style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            padding: "10px",
+                                        }}>
+                                            <MyButton onClick={loadMore} title="Load more posts" color="#ffffee" padding="10px" />
+                                        </div>
+                                    : <h2 style={{
+                                        textAlign: "center",
+                                        margin: "10px",
+                                        color: "white",
+                                    }}>
+                                        {loadMsg}
+                                    </h2>
+                            }
+                        </>
+
                     ) : <Loader loading={true} />
                 }
             </div>

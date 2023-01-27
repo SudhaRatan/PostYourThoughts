@@ -12,6 +12,8 @@ const MyButton = (props) => {
       borderRadius:"10px",
       fontSize:"20px",
       border:"1px solid #80808080",
+      padding:props.padding ? props.padding : null,
+      cursor:"pointer",
     }
   }
 
