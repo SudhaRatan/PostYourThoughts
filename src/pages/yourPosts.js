@@ -91,8 +91,10 @@ const YourPosts = () => {
                       display: "flex",
                       justifyContent: "center",
                       padding: "10px",
+                      flexDirection:"column"
                     }}>
                       <MyButton onClick={loadMore} title="Load more posts" color="#ffffee" padding="10px" />
+                      <div style={{backgroundColor:"#00000000",height:"50px"}}></div>
                     </div>
                   : <h2 style={{
                     textAlign: "center",
