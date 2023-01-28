@@ -94,15 +94,19 @@ const YourPosts = () => {
                       flexDirection:"column"
                     }}>
                       <MyButton onClick={loadMore} title="Load more posts" color="#ffffee" padding="10px" />
-                      <div style={{backgroundColor:"#00000000",height:"50px"}}></div>
+                      <div style={{backgroundColor:"#00000000",height:"60px"}}></div>
                     </div>
-                  : <h2 style={{
+                  : 
+                  <>
+                  <h2 style={{
                     textAlign: "center",
                     margin: "10px",
                     color: "white",
                   }}>
                     {loadMsg}
                   </h2>
+                  <div style={{backgroundColor:"#00000000",height:"60px"}}></div>
+                  </>
               }
             </>
 
