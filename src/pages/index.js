@@ -87,13 +87,18 @@ const Index = () => {
                             </div>
                             {
                                 !loadMsg ?
-                                    loading ? <h2 style={{
+                                    loading ? 
+                                    <>
+                                    <h2 style={{
                                         textAlign: "center",
                                         margin: "10px",
                                         color: "white",
                                     }}>
                                         Loading...
-                                    </h2> :
+                                    </h2>
+                                    <div style={{backgroundColor:"#00000000",height:"60px"}}></div>
+                                    </>
+                                     :
                                         <div style={{
                                             display: "flex",
                                             justifyContent: "center",
